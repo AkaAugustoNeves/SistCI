@@ -24,15 +24,9 @@ public class TokenService {
 	private String secret;
 	
 	public String gerarToken(Authentication authentication) {
-		System.out.println("ts: "+ expiration);
-		System.out.println("ts: "+ secret);
 		Usuario logado = (Usuario) authentication.getPrincipal();
-		System.out.println("ts: "+ logado.getEmail());
 		Date hoje = new Date();
-		System.out.println("ts: hj "+ hoje);
 		Date dataExpiracao = new Date(hoje.getTime() + Long.parseLong(expiration));
-		System.out.println("ts: dtexp"+ dataExpiracao);
-		
 		return Jwts.builder()
 				.setIssuer("token Jwt")
 				.setSubject(logado.getId().toString())
@@ -44,10 +38,8 @@ public class TokenService {
 	public boolean isTokenValid(String token) {
 		try {
 			Jwts.parser().setSigningKey(this.secret).parseClaimsJws(token);
-			System.out.println("ta valido ai o");
 			return true;
 		}catch (Exception e) {
-			System.out.println("ta valido ai não");
 			return false;
 		}
 	}	

@@ -16,6 +16,7 @@ public class DocumentoDto {
 	private String destino;
 	private String assunto;
 	private String conteudo;
+	private String coordenacaoNome;
 	private UsuarioDto usuario;
 	private String tipoDocumento;
 	private List<AnexoDto> anexos = new ArrayList<AnexoDto>();
@@ -24,6 +25,7 @@ public class DocumentoDto {
 		this.id = documento.getId();
 		this.data = documento.getDate();
 		this.destino = documento.getDestino();
+		this.coordenacaoNome = documento.getCoordenacao().getNome();
 		this.assunto = documento.getAssunto();
 		this.conteudo = documento.getConteudo();
 		this.usuario = new UsuarioDto(documento.getUsuario());
@@ -99,7 +101,14 @@ public class DocumentoDto {
 		this.anexos = anexos;
 	}
 
-	
+	public String getCoordenacaoNome() {
+		return coordenacaoNome;
+	}
+
+	public void setCoordenacaoNome(String coordenacaoNome) {
+		this.coordenacaoNome = coordenacaoNome;
+	}
+
 	
 	
 }

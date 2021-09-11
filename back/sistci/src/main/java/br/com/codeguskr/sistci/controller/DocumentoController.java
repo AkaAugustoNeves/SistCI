@@ -46,8 +46,6 @@ public class DocumentoController {
 	
 	@GetMapping("/custom")
 	public List<DocumentoDto> teste(@RequestParam String dataInicio, @RequestParam String dataFinal ) {
-		System.out.println(dataInicio);
-		System.out.println(dataFinal);
 		return ds.teste(dataInicio, dataFinal);
 	}
 	
